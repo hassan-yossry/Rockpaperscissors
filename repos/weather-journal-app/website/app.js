@@ -1,9 +1,9 @@
 /* Global Variables */
-const APIKEY = "68ac0b83f88f79106591c868a1bf2bf1";
-const weatherBaseURL = "";
+const APIKEY = "&appid=68ac0b83f88f79106591c868a1bf2bf1&units=imperial";
+
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
+let newDate = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
 /*
  *@description POSTS data and logs the response to the console
  *@params url  {String} url to be sent to
@@ -42,7 +42,7 @@ const getData = async (url = "") => {
  *@return a Promis resolved with the response
  */
 const getWeatherData = async function (zip) {
-  const locationUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${APIKEY}&units=imperial'`;
+  const locationUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}${APIKEY}'`;
   const response = await fetch(locationUrl);
   const output = await response.json();
   return output;
