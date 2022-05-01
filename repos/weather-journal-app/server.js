@@ -23,10 +23,13 @@ const port = 8000;
 const server = app.listen(port, (req, res) => {
   console.log("Listening to ...." + port);
 });
+
+//Add a GET ROUTE
 app.get("/data", (req, res) => {
   res.send(projectData);
 });
 
+//Add a POST ROUTE
 app.post("/add", (req, res) => {
   projectData = { ...req.body };
   res.send("POST recieved");
