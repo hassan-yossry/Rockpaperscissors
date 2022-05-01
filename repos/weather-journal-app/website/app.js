@@ -1,8 +1,12 @@
 /* Global Variables */
+
+//added imperial units as requested from reviewer
 const APIKEY = "&appid=68ac0b83f88f79106591c868a1bf2bf1&units=imperial";
 
 // Create a new date instance dynamically with JS
 let d = new Date();
+
+//fixed date fromatting
 let newDate = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
 /*
  *@description POSTS data and logs the response to the console
