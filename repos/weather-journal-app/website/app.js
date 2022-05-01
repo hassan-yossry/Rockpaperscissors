@@ -28,7 +28,7 @@ const postData = async (url = "", data) => {
  *@description GETs data
  *@params url  {String} url to get fata from
  *@params data {Object} data to be sent
- *@return a Promis that resolves with the response
+ *@return a Promise that resolves with the response
  */
 const getData = async (url = "") => {
   const response = await fetch(url);
@@ -39,10 +39,10 @@ const getData = async (url = "") => {
 /*
  *@description GETs weather data from open weather API
  *@params zip  {Number|String} zipcode to get weather at
- *@return a Promis resolve with the response
+ *@return a Promis resolved with the response
  */
 const getWeatherData = async function (zip) {
-  const locationUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${APIKEY}`;
+  const locationUrl = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${APIKEY}&units=imperial'`;
   const response = await fetch(locationUrl);
   const output = await response.json();
   return output;
@@ -55,7 +55,9 @@ const getWeatherData = async function (zip) {
 const showData = async () => {
   const data = await getData("http://localhost:8000/data");
   document.getElementById("date").innerHTML = data.date || "";
-  document.getElementById("temp").innerHTML = data.temp || "";
+  document.getElementById("temp").innerHTML = data.temp
+    ? Math.round(data.temp) + " degrees"
+    : "";
   document.getElementById("content").innerHTML = data.feelings || "";
 };
 
