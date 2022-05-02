@@ -1,0 +1,53 @@
+<script>
+  const result = [""];
+  function gamePlay() {
+    const res = ["Rock", "Paper", "Scissors"];
+    let num = Math.floor(3 * Math.random());
+    return res[num];
+  }
+  // console.log(gamePlay());
+
+  function playRound(comp, player) {
+    let res = 0;
+    switch (comp.toLowerCase()) {
+      case "rock":
+        if (player.toLowerCase() === "rock") return `A Draw`;
+        else if (player.toLowerCase() === "paper")
+          return `You won paper beats rock`;
+        else if (player.toLowerCase() === "scissors")
+          return `You lost rock beats scissor`;
+        else res = -2;
+        break;
+      case "scissors":
+        if (player.toLowerCase() === "rock")
+          return `You won rock beats scissor`;
+        else if (player.toLowerCase() === "paper")
+          return `You lost scissors beats rock`;
+        else if (player.toLowerCase() === "scissors") return `A Draw`;
+        else res = -2;
+        break;
+      case "paper":
+        if (player.toLowerCase() === "rock") return `You lost paper beats rock`;
+        else if (player.toLowerCase() === "paper") return `A Draw`;
+        else if (player.toLowerCase() === "scissors")
+          return `You won scissors beats paper`;
+        else res = -2;
+        break;
+      default:
+        res = -1;
+    }
+  }
+
+  function game() {
+    for (let i = 0; i < 5; i++) {
+      let comp = gamePlay();
+      let player = prompt("choose wisely! rock, paper, scissors");
+      console.log(`
+    player chose ${player}
+    computer chose ${comp}
+    `);
+      console.log(playRound(comp, player));
+    }
+  }
+  game();
+</script>
